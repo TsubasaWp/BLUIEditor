@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package id="SrpgPage">
+  <!--战场背景-->
+  <G_View id="bg_array">
+    <members>
+      <texture package="Srpg" id="Srpg/bg_array" />
+    </members>
+  </G_View>
+  <!--格子背景-->
+  <G_View id="bg_grid">
+    <members>
+      <texture package="Srpg" id="Srpg/bg_grid" />
+    </members>
+  </G_View>
+  <G_Button id="btn_grid">
+    <G_TextView>
+      <G_View>
+        <members>
+          <texture package="Srpg" id="Srpg/bg_grid" />
+          <touchpad value="0,0,0,0" />
+        </members>
+      </G_View>
+    </G_TextView>
+    <members>
+      <enable_mouse_down_offset value="1" />
+    </members>
+  </G_Button>
+  <!--锁-->
+  <G_View id="grid_lock">
+    <members>
+      <texture package="Srpg" id="Srpg/grid_lock" />
+    </members>
+  </G_View>
+  <!--关卡背景-->
+  <G_View id="hunting_map">
+    <members>
+      <texture package="Srpg" id="Srpg/hunting_map" />
+    </members>
+  </G_View>
+
+  <!--listview -->
+  <G_GridView id="list_view">
+        <members>
+            <horizontal>true</horizontal>
+            <vspace>20</vspace>
+            <hspace>0</hspace>
+            <gravity>top</gravity>
+            <column_count>4</column_count>
+        </members>
+        <G_RelativeLayout>
+            <G_ViewGroup>
+                <G_View>
+                    <members>
+                        <alpha default="0" />
+                        <scroll enable="true" />
+                    </members>
+                </G_View>
+            </G_ViewGroup>
+        </G_RelativeLayout>
+  </G_GridView>
+  	<!-- 文字-->
+  <G_TextView id="ziti_title">
+    <members>
+      <text size="16" color="255,255,255" bordercolor="42,52,49" bordersize="2" style="bold" align="hcenter vcenter" string="选择阵形" />
+    </members>
+    <G_View>
+      <members>
+        <color default="0,0,0" />
+      </members>
+    </G_View>
+  </G_TextView>
+<G_TextView id="ziti_pvp">
+    <members>
+      <text size="16" color="255,255,255" bordercolor="42,52,49" bordersize="2" style="bold" align="hcenter vcenter" string="PVP" />
+    </members>
+    <G_View>
+      <members>
+        <color default="0,0,0" />
+      </members>
+    </G_View>
+  </G_TextView>
+  <G_TextView id="ziti_pve">
+    <members>
+      <text size="16" color="255,255,255" bordercolor="42,52,49" bordersize="2" style="bold" align="hcenter vcenter" string="PVE" />
+    </members>
+    <G_View>
+      <members>
+        <color default="0,0,0" />
+      </members>
+    </G_View>
+  </G_TextView>
+  <!--神魂按钮-->
+  <G_Button id="btn_godsoul">
+    <G_TextView>
+      <G_View>
+        <members>
+          <texture package="Srpg" id="Srpg/bg_godsoul" />
+          <touchpad value="0,0,0,0" />
+        </members>
+      </G_View>
+    </G_TextView>
+    <members>
+      <enable_mouse_down_offset value="1" />
+    </members>
+  </G_Button>
+  <G_TextView id="ziti_godsoul">
+    <members>
+      <text size="14" color="255,255,255" bordercolor="42,52,49" bordersize="2" style="bold" align="hcenter vcenter" string="神魂" />
+    </members>
+    <G_View>
+      <members>
+        <color default="0,0,0" />
+      </members>
+    </G_View>
+  </G_TextView>
+  <!--技能按钮-->
+  <G_Button id="btn_skill">
+    <G_TextView>
+      <G_View>
+        <members>
+          <texture package="Srpg" id="Srpg/bg_skill" />
+          <touchpad value="0,0,0,0" />
+        </members>
+      </G_View>
+    </G_TextView>
+    <members>
+      <enable_mouse_down_offset value="1" />
+    </members>
+  </G_Button>
+  <G_TextView id="ziti_skill">
+    <members>
+      <text size="14" color="255,255,255" bordercolor="42,52,49" bordersize="2" style="bold" align="hcenter vcenter" string="技能" />
+    </members>
+    <G_View>
+      <members>
+        <color default="0,0,0" />
+      </members>
+    </G_View>
+  </G_TextView>
+  <!--魂格按钮-->
+  <G_Button id="btn_carry">
+    <G_TextView>
+      <G_View>
+        <members>
+          <texture package="Srpg" id="Srpg/bg_carry" />
+          <touchpad value="0,0,0,0" />
+        </members>
+      </G_View>
+    </G_TextView>
+    <members>
+      <enable_mouse_down_offset value="1" />
+    </members>
+  </G_Button>
+  <G_TextView id="ziti_carry">
+    <members>
+      <text size="14" color="255,255,255" bordercolor="42,52,49" bordersize="2" style="bold" align="hcenter vcenter" string="魂格" />
+    </members>
+    <G_View>
+      <members>
+        <color default="0,0,0" />
+      </members>
+    </G_View>
+  </G_TextView>
+    <!--战斗按钮-->
+  <G_Button id="btn_battle">
+    <G_TextView>
+      <G_View>
+        <members>
+          <texture package="Srpg" id="Srpg/battle" />
+          <touchpad value="0,0,0,0" />
+        </members>
+      </G_View>
+    </G_TextView>
+    <members>
+      <enable_mouse_down_offset value="1" />
+    </members>
+  </G_Button>
+  
+</package>

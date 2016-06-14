@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<page id="SRPGArrayPage" alpha="0">
+    <!-- 动画背景  -->
+    <component id="bg_animation">
+        <entity package="Common" id="background" />
+        <param width="fill" height="fill">
+            <rules>
+                <rule align="left top" />
+            </rules>
+        </param>
+    </component>
+    <!-- 黑色透明背景  -->
+    <component id="bg_black_touming">
+        <entity package="Common" id="alphamask" />
+        <parent id="bg_animation" />
+        <param width="fill" height="fill" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule align="left top" />
+            </rules>
+        </param>
+    </component>
+    <!-- 黑色背景  -->
+    <component id="bg_black">
+        <entity package="Common" id="background" />
+        <parent id="bg_black_touming" />
+        <param width="980" height="640" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <!-- 大背景  -->
+    <component id="bg_new1">
+        <entity package="Common" id="bg_new1" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="10,50,0,0">
+            <rules>
+                <rule anchor="bg_black" align="left top" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_top">
+        <entity package="Common" id="bg_new_top" />
+        <parent id="bg_black" />
+        <param width="216" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new1" align="toright vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_title_top1">
+        <entity package="Common" id="bg_title_top1" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new_top" align="toright bottom" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_title_top2">
+        <entity package="Common" id="bg_title_top2" />
+        <parent id="bg_black" />
+        <param width="150" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_title_top1" align="toright bottom" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_title_top5">
+        <entity package="Common" id="bg_title_top4" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_title_top2" align="toright bottom" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_top1">
+        <entity package="Common" id="bg_new_top" />
+        <parent id="bg_black" />
+        <param width="166" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_title_top5" align="toright bottom" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new2">
+        <entity package="Common" id="bg_new2" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new_top1" align="toright vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_left">
+        <entity package="Common" id="bg_new_left" />
+        <parent id="bg_black" />
+        <param width="content" height="455" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new1" align="left below" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_mid">
+        <entity package="Common" id="bg_new_mid" />
+        <parent id="bg_black" />
+        <param width="823" height="455" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new_left" align="toright top" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_right">
+        <entity package="Common" id="bg_new_right" />
+        <parent id="bg_black" />
+        <param width="content" height="455" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new_mid" align="toright top" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new3">
+        <entity package="Common" id="bg_new3" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new_left" align="left below" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_bottom">
+        <entity package="Common" id="bg_new_bottom" />
+        <parent id="bg_black" />
+        <param width="823" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new3" align="toright vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new4">
+        <entity package="Common" id="bg_new4" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_new_bottom" align="toright vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_zs_left">
+        <entity package="Common" id="bg_new_zs_left" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,-9,-17,0">
+            <rules>
+                <rule anchor="bg_new1" align="toleft top" />
+            </rules>
+        </param>
+    </component>
+    <component id="bg_new_zs_right">
+        <entity package="Common" id="bg_new_zs_right" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="-17,-9,0,0">
+            <rules>
+                <rule anchor="bg_new2" align="toright top" />
+            </rules>
+        </param>
+    </component>
+
+    <!-- 战场背景  -->
+    <component id="bg_array">
+        <entity package="SrpgPage" id="bg_array" />
+        <parent id="bg_black" />
+        <param width="960" height="640" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="bg_black" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <!-- title  -->
+    <component id="bg_title">
+        <entity package="Common" id="bg_title" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,-12,0,0">
+            <rules>
+                <rule anchor="bg_title_top2" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <!-- title文字  -->
+    <component id="ziti_title">
+        <entity package="SrpgPage" id="ziti_title" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,-2,0,0">
+            <rules>
+                <rule anchor="bg_title" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <!-- 帮助按钮  -->
+    <component id="btn_help" event="btn_help">
+        <entity package="Common1" id="btn_help" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="30,32,0,0">
+            <rules>
+                <rule anchor="bg_black" align="top left" />
+            </rules>
+        </param>
+        <touchpad value="20,20,20,20" />
+    </component>
+    <!-- 关闭按钮  -->
+    <component id="button__new" event="btn_close">
+        <entity package="Common1" id="button_close" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,-26,-10,0">
+            <rules>
+                <rule anchor="bg_new2" align="top right" />
+            </rules>
+        </param>
+        <touchpad value="20,20,20,20" />
+    </component>
+
+    <!-- 阵型棋盘 - 左 -->
+    <component id="grid_left_1" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="-100,-130,0,0">
+            <rules>
+                <rule anchor="bg_black" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_1">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_1" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_left_2" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_left_1" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_2">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_2" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <component id="grid_left_3" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_left_2" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_3">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_3" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <component id="grid_left_4" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,20,0">
+            <rules>
+                <rule anchor="grid_left_1" align="toleft vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_4">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_4" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <component id="grid_left_5" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_left_4" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_5">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_5" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_left_6" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_left_5" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_6">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_6" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_left_7" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,20,0">
+            <rules>
+                <rule anchor="grid_left_4" align="toleft vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_7">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_7" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_left_8" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_left_7" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_8">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_8" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_left_9" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_left_8" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_left_9">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_left_9" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <!-- 阵型棋盘 - 右 -->
+    <component id="grid_right_1" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="100,-130,0,0">
+            <rules>
+                <rule anchor="bg_black" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_1">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_1" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_right_2" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_right_1" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_2">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_2" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_right_3" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_right_2" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_3">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_3" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_right_4" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="20,0,0,0">
+            <rules>
+                <rule anchor="grid_right_1" align="toright vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_4">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_4" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_right_5" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_right_4" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_5">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_5" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_right_6" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_right_5" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_6">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_6" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="grid_right_7" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="20,0,0,0">
+            <rules>
+                <rule anchor="grid_right_4" align="toright vcenter" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_7">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_7" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <component id="grid_right_8" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_right_7" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_8">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_8" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <component id="grid_right_9" event="btn_grid">
+        <entity package="SrpgPage" id="btn_grid" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,20,0,0">
+            <rules>
+                <rule anchor="grid_right_8" align="hcenter below" />
+            </rules>
+        </param>
+    </component>
+    <component id="item_right_9">
+        <entity package="Common" id="default_view" />
+        <parent id="bg_black" />
+        <param width="100" height="100" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="grid_right_9" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+
+    <!-- 天神列表 -->
+    <component id="list_view" customAdapter="">
+        <entity package="SrpgPage" id="list_view" />
+        <parent id="bg_black" />
+        <param width="700" height="100" x="0" y="0" margin="-60,0,0,16">
+            <rules>
+                <rule anchor="bg_black" align="hcenter bottom" />
+            </rules>
+        </param>
+    </component>
+
+    <!-- 确定按钮-pve  -->
+    <component id="btn_confirm" event="btn_confirm">
+        <entity package="Common1" id="btn_bg_yellow_new" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,30,30">
+            <rules>
+                <rule anchor="bg_black" align="right bottom" />
+            </rules>
+        </param>
+        <touchpad value="10,10,10,10" />
+    </component>
+    <!-- 确定文字 pve -->
+    <component id="ziti_pve">
+        <entity package="SrpgPage" id="ziti_pve" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="btn_confirm" align="hcenter vcenter" />
+            </rules>
+            </param>
+    </component>
+    <!-- 确定按钮 pvp -->
+    <component id="btn_confirm_pvp" event="btn_pvp">
+        <entity package="Common1" id="btn_bg_yellow_new" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,20,0">
+            <rules>
+                <rule anchor="btn_confirm" align="toleft vcenter" />
+            </rules>
+        </param>
+        <touchpad value="10,10,10,10" />
+    </component>
+    <!-- 确定文字 pvp -->
+    <component id="ziti_pvp">
+        <entity package="SrpgPage" id="ziti_pvp" />
+        <parent id="bg_black" />
+        <param width="content" height="content" x="0" y="0" margin="0,0,0,0">
+            <rules>
+                <rule anchor="btn_confirm_pvp" align="hcenter vcenter" />
+            </rules>
+        </param>
+    </component>
+</page>
