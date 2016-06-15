@@ -12,15 +12,22 @@ namespace BLEntity
     [XmlRoot("package")]
     public class Entity
     {
+        [XmlAttribute("id")] public string id;
         [XmlElement("G_View")] public List<G_View> views = new List<G_View>();
         [XmlElement("G_TextView")] public List<G_TextView> textViews = new List<G_TextView>();
         [XmlElement("G_Button")] public List<G_Button> buttons = new List<G_Button>();
         [XmlElement("G_GridView")] public List<G_GridView> gridViews = new List<G_GridView>();
-        [XmlElement("G_ListView")] public List<G_ListView> listViews = new List<G_ListView>(); 
+        [XmlElement("G_ListView")]
+        public List<G_ListView> listViews = new List<G_ListView>();
+        [XmlElement("G_RelativeLayout")]
+        public List<G_RelativeLayout> relativeLayouts = new List<G_RelativeLayout>(); 
     }
 
     public class G_View
     {
+
+        [XmlAttribute("id")]
+        public string id;
         [XmlElement("members")] public ViewMember member;
 
         public class ViewMember
@@ -33,6 +40,8 @@ namespace BLEntity
 
     public class G_TextView
     {
+        [XmlAttribute("id")]
+        public string id;
         [XmlElement("members")] public TextMembers member;
         [XmlElement("G_View")] public ColorView view;
         public class ColorView
@@ -76,6 +85,8 @@ namespace BLEntity
 
     public class G_Button
     {
+        [XmlAttribute("id")]
+        public string id;
         [XmlElement("member")] public MouseDownMember member;
         [XmlElement("G_TextView")] public ButtonTextNode textview;
 
@@ -109,16 +120,22 @@ namespace BLEntity
 
     public class G_GridView
     {
-        
+
+        [XmlAttribute("id")]
+        public string id;
     }
 
     public class G_ListView
     {
-        
+
+        [XmlAttribute("id")]
+        public string id;
     }
 
     public class G_RelativeLayout
     {
+        [XmlAttribute("id")]
+        public string id;
         [XmlElement("G_ViewGroup")]
         public G_ViewGroup viewGroup;
 
