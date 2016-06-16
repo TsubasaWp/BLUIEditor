@@ -61,27 +61,6 @@ namespace BLEntity
             public Color color;
         }
 
-        public class Text
-        {
-            [XmlAttribute("size")]
-            public string size;
-            [XmlAttribute("color")]
-            public string color;
-            [XmlAttribute("bordersize")]
-            public string borderSize;
-            [XmlAttribute("bordercolor")]
-            public string borderColor;
-            [XmlAttribute("style")]
-            public string style;
-            [XmlAttribute("space")]
-            public string space;
-            [XmlAttribute("align")]
-            public string align;
-            [XmlAttribute("string")]
-            public string str;
-            [XmlAttribute("stringID")]
-            public string stringID;
-        }
     }
 
     public class G_Button
@@ -170,5 +149,25 @@ namespace BLEntity
         public string defaultColor;
     }
 
-
+    public class Text
+    {
+        [XmlAttribute("size")]
+        public string size;
+        [XmlAttribute("color")]
+        public string color;
+        [XmlAttribute("bordersize")]
+        public string borderSize;
+        [XmlAttribute("bordercolor")]
+        public string borderColor;
+        [XmlAttribute("style")]
+        public string style;
+        [XmlAttribute("space")]
+        public string space;
+        [XmlAttribute("align")]
+        public string align;
+        [XmlAttribute("string")]
+        public string str;
+        [XmlAttribute("stringID")]
+        public string stringID;
+    }
 }

@@ -14,7 +14,7 @@ public class BLUIInspector : Editor {
 
         if (GUILayout.Button("Open EditorWindow"))
         {
-            BLUIDirectory.AddWindow();
+            BLUIDirectoryWindow.AddWindow();
         }
 
         EditorGUILayout.EndHorizontal();

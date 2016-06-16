@@ -3,30 +3,32 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using BLPage; 
 using BLEntity;
 using UnityEditor;
 using UnityEngine.UI;
+using Component = BLPage.Component;
 using Entity = BLEntity.Entity;
+using Text = BLEntity.Text;
 
 namespace BLUIEditor
 {
-    public class UIEditor : Editor
-    {
 
+    public class BLUIParser : Editor
+    {
         // public
         public Transform Canvas;
         public String RootPath = "F:\\Project\\BL\\clienthd\\data\\data_hd\\ui\\";
+        public String OutputPath = "Output";
+
         // private
         private Page page;
+        private Page modifidePage;
+        private string currentFile;
         private List<Entity> entitiList = new List<Entity>();
         private List<GameObject> layerObjects = new List<GameObject>();
-
-        void Start()
-        {
-            
-        }
-
+    
         public void ShowPage(string filePath)
         {
             GameObject stage = GameObject.Find("BLPageStage");
@@ -43,12 +45,113 @@ namespace BLUIEditor
 
             if (!File.Exists(filePath))
             {
+                currentFile = "";
                 return;
             }
 
+            currentFile = filePath;
             page = XmlLoader.LoadPage(filePath);
-
+            modifidePage = null;
             RenderUI();
+        }
+
+        public void SavePage()
+        {
+            if ( modifidePage == null)
+            { 
+                return;
+            }
+            string savePath = OutputPath + "\\" + page.id + ".xml";
+            XmlLoader.SavePage(savePath, modifidePage);
+        }
+
+        public void Refresh()
+        {
+            if (page == null)
+            {
+                return;
+            }
+            if (modifidePage == null)
+            {
+                modifidePage = new Page();
+                modifidePage.Components = new List<Component>();
+                modifidePage.id = page.id;
+                modifidePage.alpha = page.alpha;
+            }
+            else
+            {
+                modifidePage.Components.Clear();
+            }
+
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            for (int i = allObjects.Length -1; i >= 0; i--)
+            {
+                GameObject child = allObjects[i];
+                BLUiComponent script = child.gameObject.GetComponent<BLUiComponent>();
+                
+                if (script && script.Component != null)
+                {
+                    script.OnRefresh();
+                    modifidePage.Components.Add(script.Component);
+                }
+            }
+        }
+
+        public void CopyComponent(GameObject obj)
+        {
+            GameObject newObj = GameObject.Instantiate(obj);
+            newObj.name = obj.name;
+            RenameComponent(newObj);
+            newObj.transform.SetParent(obj.transform.parent.transform);
+            CopyScript(obj, newObj);
+        }
+        
+        // 递归的重命名以及深拷贝BLUiComponent
+        public void CopyScript(GameObject origin, GameObject target)
+        {
+            RenameComponent(target);
+            // Deep Copy
+            BLUiComponent script = target.GetComponent<BLUiComponent>();
+            script.Component = origin.GetComponent<BLUiComponent>().Component.Copy();
+
+            // 复制子节点
+            foreach (Transform child1 in origin.GetComponentsInChildren<Transform>())
+            {
+                if (child1.gameObject.name == origin.name) continue;
+                foreach (Transform child2 in target.GetComponentsInChildren<Transform>())
+                {
+                    if (child2.gameObject.name == target.name) continue;
+                    if (child1.gameObject.name == child2.gameObject.name)
+                    {
+                        CopyScript(child1.gameObject, child2.gameObject);
+                    }
+                }
+            }
+        }
+
+        // 重命名,防止重名
+        void RenameComponent(GameObject obj)
+        {
+            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+            bool nameUsed = false;
+            int index = 1;
+            string newName;
+            // 防止重名
+            do
+            {
+                nameUsed = false;
+                newName = obj.name + '_' + index;
+                foreach (GameObject child in allObjects)
+                {
+                    if (newName == child.name)
+                    {
+                        nameUsed = true;
+                        index++;
+                        break;
+                    }
+                }
+            } while (nameUsed);
+            obj.name = newName;
         }
 
         public Entity LoadEntityPackage(string package)
@@ -67,6 +170,28 @@ namespace BLUIEditor
             entitiList.Add(entity);
             return entity;
 
+            return null;
+        }
+
+        public Text FindTextFromPackage(string package, string id)
+        {
+            Entity entity = LoadEntityPackage(package);
+            if (entity == null)
+            {
+                return null;
+            }
+
+            foreach (G_TextView item in entity.textViews)
+            {
+                if (item.id == id)
+                {
+                    if (item.member != null &&
+                        item.member.text != null)
+                    {
+                        return item.member.text;
+                    }
+                }
+            }
             return null;
         }
 
@@ -154,9 +279,9 @@ namespace BLUIEditor
                 if (component.entity == null)
                     continue;
 
-                var layer = new GameObject(component.id);
-                UIComponent script = layer.AddComponent<UIComponent>();
-                script.component = component;
+                GameObject layer = new GameObject(component.id);
+                BLUiComponent script = layer.AddComponent<BLUiComponent>();
+                script.Component = component;
 
                 RectTransform rectTransform = layer.AddComponent<RectTransform>();
                 rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
@@ -170,12 +295,11 @@ namespace BLUIEditor
                 string pngPath = FindTextureFromPackage(component.entity.package, component.entity.id);
                 if (pngPath == null)
                 {
-                    pngPath = "F:\\Project\\BL_UIEditor\\BL_UIEdigor\\Assets\\Resource\\demo.png";
+                    pngPath = "Assets\\Resource\\demo.png";
                 }
                 else
                 {
-                    pngPath = "F:\\Project\\BL\\clienthd\\data\\data_hd\\ui\\texture\\"
-                              + pngPath.Replace("\\", "\\\\") + ".png";
+                    pngPath = RootPath + "texture\\" + pngPath.Replace("\\", "\\\\") + ".png";
                 }
 
                 // Parent
@@ -279,13 +403,17 @@ namespace BLUIEditor
 
                 SetNodePosition(rectTransform, anchorTransform, parentTransform, alignStr, margin);
 
+                // set component script
+                script.Node = rectTransform;
+                script.Anchor = anchorTransform;
+                script.Parent = parentTransform;
                 layerObjects.Add(layer);
             }
 
             foreach (GameObject layer in layerObjects)
             {
-                UIComponent script = layer.GetComponent<UIComponent>();
-                if (script && script.component.visible == "false")
+                BLUiComponent script = layer.GetComponent<BLUiComponent>();
+                if (script && script.Component.visible == "false")
                 {
                     layer.SetActive(false);
                 }

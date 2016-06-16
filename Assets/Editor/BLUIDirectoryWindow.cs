@@ -6,16 +6,16 @@ using UnityEditor;
 using UnityEditor.UI;
 using BLUIEditor;
 
-public class BLUIDirectory : EditorWindow
+public class BLUIDirectoryWindow : EditorWindow
 {
 
     [MenuItem("BLUIEditor/Open")]
     public static void AddWindow()
     {
         //创建窗口
-        Rect wr = new Rect(0, 0,400, 800);
-        BLUIDirectory window =
-            (BLUIDirectory) EditorWindow.GetWindowWithRect(typeof (BLUIDirectory), wr, true, "EmoticonEditorWindow");
+        Rect wr = new Rect(0, 0,360, 900);
+        BLUIDirectoryWindow window =
+            (BLUIDirectoryWindow) EditorWindow.GetWindowWithRect(typeof (BLUIDirectoryWindow), wr, true, "EmoticonEditorWindow");
         window.Show();
 
     }
@@ -34,7 +34,7 @@ public class BLUIDirectory : EditorWindow
     private Sprite addSprite;
     private string addNewName;
 
-    private UIEditor pageEditor = new UIEditor();
+    private BLUIParser pageParser = new BLUIParser();
 
     // search
     private string fileSearchKey;
@@ -83,7 +83,7 @@ public class BLUIDirectory : EditorWindow
                 if (GUILayout.Button(filepath.Last(), GUILayout.Width(300)))
                 {
                     Debug.Log(file);
-                    pageEditor.ShowPage(file);
+                    pageParser.ShowPage(file);
                 }  
             }
             GUILayout.EndHorizontal();
@@ -91,6 +91,9 @@ public class BLUIDirectory : EditorWindow
         }
         GUILayout.EndScrollView();
         GUILayout.EndHorizontal();
+
+        // update
+        pageParser.Refresh();
     }
 
     private void DrawInfo()
@@ -101,26 +104,29 @@ public class BLUIDirectory : EditorWindow
 
     private void DrawEditor()
     {
+        GUILayout.Space(20);
+        //========================================================
+        GUILayout.Label("一定要记得保存啊!");
         GUILayout.BeginHorizontal();
-        addNewName = EditorGUILayout.TextField(addNewName);
-        if (GUILayout.Button("changeName", GUILayout.Width(100)))
+        if (GUILayout.Button("保存", GUILayout.Width(200)))
         {
-            ChangeName(addNewName);
-        }
-        GUILayout.EndHorizontal();
-        
-        GUILayout.BeginHorizontal();
-        addSprite = EditorGUILayout.ObjectField("AddSprite:", addSprite, typeof(Sprite), true) as Sprite;
-        if (GUILayout.Button("AddSprite", GUILayout.Width(100)))
-        {
-            if (addSprite != null)
-            {
-                addSprite = null;
-            }
+            pageParser.SavePage();
         }
         GUILayout.EndHorizontal();
         GUILayout.Space(20);
 
+        //========================================================
+        GUILayout.Label("务必使用这个按钮复制,直接在unity中操作无效");
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("复制选中图层", GUILayout.Width(200)))
+        {
+            pageParser.CopyComponent(Selection.activeGameObject);
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.Space(20);
+
+        //========================================================
+        GUILayout.Label("搜索Page:");
         GUILayout.BeginHorizontal();
         fileSearchKey = EditorGUILayout.TextField(fileSearchKey);
        

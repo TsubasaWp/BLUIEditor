@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="gb2312"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="SrpgGodSoulPage" alpha="0">
+  <component id="bg_animation">
+    <entity package="Common" id="background" />
+    <param width="fill" height="fill">
+      <rules>
+        <rule align="left top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_black_touming">
+    <entity package="Common" id="alphamask" />
+    <parent id="bg_animation" />
+    <param width="fill" height="fill" margin="0,0,0,0">
+      <rules>
+        <rule align="left top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_black">
+    <entity package="Common" id="background" />
+    <parent id="bg_black_touming" />
+    <param width="980" height="640" margin="0,0,0,0">
+      <rules>
+        <rule align="hcenter vcenter" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new1">
+    <entity package="Common" id="bg_new1" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="161,81,0,0">
+      <rules>
+        <rule anchor="bg_black" align="left top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_top">
+    <entity package="Common" id="bg_new_top" />
+    <parent id="bg_black" />
+    <param width="105" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new1" align="toright vcenter" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_title_top1">
+    <entity package="Common" id="bg_title_top1_left" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new_top" align="toright bottom" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_title_top2">
+    <entity package="Common" id="bg_title_top2" />
+    <parent id="bg_black" />
+    <param width="99" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_title_top1" align="toright bottom" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_title_top5">
+    <entity package="Common" id="bg_title_top4_right" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_title_top2" align="toright bottom" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_top1">
+    <entity package="Common" id="bg_new_top" />
+    <parent id="bg_black" />
+    <param width="105" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_title_top5" align="toright bottom" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new2">
+    <entity package="Common" id="bg_new2" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new_top1" align="toright vcenter" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_left">
+    <entity package="Common" id="bg_new_left" />
+    <parent id="bg_black" />
+    <param width="content" height="360" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new1" align="left below" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_mid">
+    <entity package="Common" id="bg_new_mid" />
+    <parent id="bg_black" />
+    <param width="521" height="360" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new_left" align="toright top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_right">
+    <entity package="Common" id="bg_new_right" />
+    <parent id="bg_black" />
+    <param width="content" height="360" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new_mid" align="toright top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new3">
+    <entity package="Common" id="bg_new3" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new_left" align="left below" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_bottom">
+    <entity package="Common" id="bg_new_bottom" />
+    <parent id="bg_black" />
+    <param width="521" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new3" align="toright vcenter" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new4">
+    <entity package="Common" id="bg_new4" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,0,0,0">
+      <rules>
+        <rule anchor="bg_new_bottom" align="toright vcenter" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_zs_left">
+    <entity package="Common" id="bg_new_zs_left" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,-9,-17,0">
+      <rules>
+        <rule anchor="bg_new1" align="toleft top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_new_zs_right">
+    <entity package="Common" id="bg_new_zs_right" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="-17,-9,0,0">
+      <rules>
+        <rule anchor="bg_new2" align="toright top" />
+      </rules>
+    </param>
+  </component>
+  <component id="bg_title">
+    <entity package="Common" id="bg_title" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,-12,0,0">
+      <rules>
+        <rule anchor="bg_title_top2" align="hcenter vcenter" />
+      </rules>
+    </param>
+  </component>
+  <component id="btn_close" event="btn_close">
+    <entity package="Common1" id="button_close" />
+    <parent id="bg_black" />
+    <param width="content" height="content" margin="0,-26,-10,0">
+      <rules>
+        <rule anchor="bg_new2" align="top right" />
+      </rules>
+    </param>
+  </component>
+</page>
