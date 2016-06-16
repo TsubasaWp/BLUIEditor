@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEditor.UI;
+using BLUIEditor;
 
 public class BLUIDirectory : EditorWindow
 {
 
-    [MenuItem("Assets/EmoticonEditor")]
+    [MenuItem("BLUIEditor/Open")]
     public static void AddWindow()
     {
         //创建窗口
-        Rect wr = new Rect(0, 0, 300, 300);
+        Rect wr = new Rect(0, 0,400, 800);
         BLUIDirectory window =
             (BLUIDirectory) EditorWindow.GetWindowWithRect(typeof (BLUIDirectory), wr, true, "EmoticonEditorWindow");
         window.Show();
 
     }
 
-    private static readonly string DefaultWorkSpaces = "ProjectSettings/";
+    private static readonly string DefaultWorkSpaces = "F:\\Project\\BL\\clienthd\\data\\data_hd\\ui\\page";
     private string workSpaces = DefaultWorkSpaces;
     private Vector2 infoPosition = Vector2.zero;
     private Vector2 listPosition = new Vector2(400, 0);
@@ -31,6 +33,11 @@ public class BLUIDirectory : EditorWindow
     private string creatNewEmoticonName;
     private Sprite addSprite;
     private string addNewName;
+
+    private UIEditor pageEditor = new UIEditor();
+
+    // search
+    private string fileSearchKey;
 
 
     private void Awake()
@@ -59,17 +66,25 @@ public class BLUIDirectory : EditorWindow
 
     void OnGUI()
     {
-        GUILayout.BeginHorizontal();
-        editorPosition = GUILayout.BeginScrollView(editorPosition, GUILayout.Width(400));
         DrawEditor();
+
+        GUILayout.BeginHorizontal();
+        editorPosition = GUILayout.BeginScrollView(editorPosition, GUILayout.Width(350), GUILayout.Height(700));
+        
 
         string[] files = Directory.GetFiles(workSpaces, "*");
         foreach (string file in files)
         {
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button(file, GUILayout.Width(200)))
+            string[] filepath = file.Split('\\');
+            if (fileSearchKey == null || 
+                (fileSearchKey != null && filepath.Last().ToLower().Contains(fileSearchKey.ToLower())))
             {
-                Debug.Log(file);
+                if (GUILayout.Button(filepath.Last(), GUILayout.Width(300)))
+                {
+                    Debug.Log(file);
+                    pageEditor.ShowPage(file);
+                }  
             }
             GUILayout.EndHorizontal();
 
@@ -86,7 +101,6 @@ public class BLUIDirectory : EditorWindow
 
     private void DrawEditor()
     {
-       
         GUILayout.BeginHorizontal();
         addNewName = EditorGUILayout.TextField(addNewName);
         if (GUILayout.Button("changeName", GUILayout.Width(100)))
@@ -101,13 +115,17 @@ public class BLUIDirectory : EditorWindow
         {
             if (addSprite != null)
             {
-              
                 addSprite = null;
             }
         }
         GUILayout.EndHorizontal();
-        GUILayout.Space(30);
-      
+        GUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        fileSearchKey = EditorGUILayout.TextField(fileSearchKey);
+       
+        GUILayout.EndHorizontal();
+        GUILayout.Space(10);
     }
 
     private void DrawBaseInfo()

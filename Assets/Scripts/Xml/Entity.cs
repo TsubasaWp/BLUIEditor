@@ -21,6 +21,7 @@ namespace BLEntity
         public List<G_ListView> listViews = new List<G_ListView>();
         [XmlElement("G_RelativeLayout")]
         public List<G_RelativeLayout> relativeLayouts = new List<G_RelativeLayout>(); 
+        [XmlElement("G_Toggle")] public List<G_Toggle> toggles = new List<G_Toggle>();
     }
 
     public class G_View
@@ -116,7 +117,14 @@ namespace BLEntity
         {
             [XmlAttribute("touchpad")] public string touchpad;
         }
-    } 
+    }
+
+    public class G_Toggle
+    {
+        [XmlAttribute("id")]
+        public string id;
+        [XmlElement("G_Button")] public G_Button button;
+    }
 
     public class G_GridView
     {
